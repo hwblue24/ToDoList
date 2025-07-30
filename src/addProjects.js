@@ -1,4 +1,4 @@
- //handles creating sibling projects 
+//handles creating sibling projects 
 const addProjects = function () {
     const projectsNav = document.querySelector(".projectsNav");
     const createProjectsBtn = document.createElement("button");
