@@ -1,11 +1,12 @@
 body {
     display: grid;
     height: 100vh;
+    background-color: rgb(134, 162, 238);
     grid-template-columns: 1fr 5fr;
-    grid-template-rows: 1fr 1fr;
+    grid-template-rows: 1fr;
     grid-template-areas:
-        "header content"
-        "header tasks";
+        "header contentNav";
+    
 }
 
 header { 
@@ -13,22 +14,49 @@ header {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    
+    background-color: rgb(255, 255, 255);
+    background-clip: content-box;
+    padding:10px;
+
 }
 
-#content {
-    grid-area:content;
-    
+.contentNav {
+    grid-area:contentNav;
+    background-color: rgb(255, 255, 255);
+    background-clip: content-box;
+    padding:10px;
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
-.addTasks {
-    grid-area:tasks;
-    display: flex;
-    align-items: flex-end;
-    justify-content: flex-end;
-}
 
 .projectsNav { 
     display:flex; 
     flex-direction: column;
+    gap:20px;
+    
+}
+
+button {
+    all:unset;
+    font-size: larger;
+    padding:15px;
+  }
+
+
+nav { 
+    display:flex;
+}
+
+.addProjectsNav {
+    align-self: flex-end;
+    justify-content: flex-end;
+    display: flex;
+    font-size:xx-large;
+  }
+
+
+.addTasks button {
+    font-size:xx-large;
 }

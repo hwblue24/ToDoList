@@ -1,10 +1,8 @@
 import "./styles.css"
-import { createAddTasksBtn } from "./tasks";
 
 import { addProjects, nameProjects } from "./addProjects";
 
-//default task button used to add tasks
-createAddTasksBtn();
+import { createToDo, postToDo} from "./todos";
 
 
 //Handles adding sibling projects
@@ -18,3 +16,10 @@ document.querySelector("nav").addEventListener("click", function (e) {
         nameProjects(e);
     }
 });
+
+document.querySelector(".addTasks").addEventListener("click", function () {
+    const newToDo = createToDo(); 
+    postToDo(newToDo);
+   
+
+})
