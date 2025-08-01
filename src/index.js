@@ -2,7 +2,7 @@ import "./styles.css"
 
 import { addProjects, nameProjects } from "./addProjects";
 
-import { createToDo, postToDo} from "./todos";
+import { createToDo, postToDo, removeToDo} from "./todos";
 
 
 //Handles adding sibling projects
@@ -23,3 +23,10 @@ document.querySelector(".addTasks").addEventListener("click", function () {
    
 
 })
+
+//handles removing todoItems
+document.querySelector("#content").addEventListener("click", function (e) {
+    if (e.target.className === "toDoItem") {
+        removeToDo(e);
+    }
+});

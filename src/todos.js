@@ -14,7 +14,7 @@ const createToDo = function () {
     
     const title = prompt ("what is the title?");
     const description = prompt ("what is the description?");
-    const dueDate = prompt ("Due date please");
+    const dueDate = prompt ("Due date mm/dd/yy");
     const priority = prompt ("Scale priority, 5 highest");
     const newToDo = new ToDo (title, description, dueDate, priority); 
     toDoList.push(newToDo);
@@ -25,9 +25,14 @@ const createToDo = function () {
 const postToDo = function (newToDo) {
     const content = document.querySelector("#content"); 
     const toDoDiv = document.createElement("div");
-    toDoDiv.textContent = `Title: ${newToDo.title}, Description: ${newToDo.description}, Due: ${newToDo.dueDate}, Priority: ${newToDo.priority}`;;
+    toDoDiv.classList.add("toDoItem");
+    toDoDiv.textContent = ` - Title:${newToDo.title}, Description: ${newToDo.description}, Due: ${newToDo.dueDate}, Priority: ${newToDo.priority}`;
     content.appendChild(toDoDiv);
 
 }
 
-export{createToDo, postToDo}
+const removeToDo = function (e) {
+    const toDoItem = e.target; 
+    toDoItem.remove();
+}
+export{createToDo, postToDo, removeToDo}

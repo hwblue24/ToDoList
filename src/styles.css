@@ -60,3 +60,9 @@ nav {
 .addTasks button {
     font-size:xx-large;
 }
+
+#content > * {
+    font-size: larger;
+    padding:10px; 
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
