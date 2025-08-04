@@ -1,3 +1,5 @@
+import { parse, isValid } from "date-fns";
+
 // class used to create ToDo objects
 class ToDo {
     constructor (title, description, dueDate, priority) {
@@ -14,25 +16,46 @@ const createToDo = function () {
     
     const title = prompt ("what is the title?");
     const description = prompt ("what is the description?");
-    const dueDate = prompt ("Due date mm/dd/yy");
     const priority = prompt ("Scale priority, 5 highest");
+    const dueDate = getValidDate();
     const newToDo = new ToDo (title, description, dueDate, priority); 
     toDoList.push(newToDo);
     return newToDo;
 
 }
 
+const getValidDate = function () {
+    let dueDate = prompt ("Enter a due date (MM/dd/yy)");
+    let parsedDate = parse(dueDate, "MM/dd/yy", new Date());
+
+    while(!isValid(parsedDate)) {
+        alert ("Invalid format");
+        dueDate = prompt ("Enter a due date (MM/dd/yy");
+        parsedDate = parse(dueDate, "MM/dd/yy", new Date());
+    }
+
+return parsedDate;
+}
+
 const postToDo = function (newToDo) {
     const content = document.querySelector("#content"); 
     const toDoDiv = document.createElement("div");
     toDoDiv.classList.add("toDoItem");
+
+    const deleteBtn = document.createElement("button");
+    deleteBtn.textContent = "Delete";
+    deleteBtn.classList.add("deleteBtn");
+
     toDoDiv.textContent = ` - Title:${newToDo.title}, Description: ${newToDo.description}, Due: ${newToDo.dueDate}, Priority: ${newToDo.priority}`;
+
     content.appendChild(toDoDiv);
+    toDoDiv.appendChild(deleteBtn)
 
 }
 
 const removeToDo = function (e) {
-    const toDoItem = e.target; 
+    const deleteBtn = e.target; 
+    const toDoItem = deleteBtn.closest(".toDoItem"); 
     toDoItem.remove();
 }
 export{createToDo, postToDo, removeToDo}

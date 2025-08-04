@@ -44,6 +44,11 @@ button {
     padding:15px;
   }
 
+.deleteBtn {
+    all:revert;
+    margin-left: 30px;
+}
+
 
 nav { 
     display:flex;

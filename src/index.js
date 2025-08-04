@@ -26,7 +26,7 @@ document.querySelector(".addTasks").addEventListener("click", function () {
 
 //handles removing todoItems
 document.querySelector("#content").addEventListener("click", function (e) {
-    if (e.target.className === "toDoItem") {
+    if (e.target.className === "deleteBtn") {
         removeToDo(e);
     }
 });
