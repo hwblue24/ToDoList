@@ -1,6 +1,6 @@
 import "./styles.css"
 
-import { addProjects, nameProjects } from "./addProjects";
+import { addProjects, nameProjects, matchProjectHeader } from "./addProjects";
 
 import { createToDo, postToDo, removeToDo} from "./todos";
 
@@ -30,3 +30,8 @@ document.querySelector("#content").addEventListener("click", function (e) {
         removeToDo(e);
     }
 });
+
+//handles matching project titles with header titles 
+document.querySelector(".projectsNav").addEventListener("click", function (e) {
+    matchProjectHeader(e);
+})
