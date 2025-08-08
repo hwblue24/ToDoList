@@ -1,8 +1,15 @@
 import "./styles.css"
 
-import { addProjects, nameProjects, matchProjectHeader } from "./addProjects";
+import { addProjects, nameProjects, matchProjectHeader, buildFromStorage} from "./addProjects";
 
-import { createToDo, postToDo, removeToDo} from "./todos";
+import { createToDo, postToDo, removeToDo, buildFromToDoStorage} from "./todos";
+
+document.addEventListener("DOMContentLoaded", () => {
+    buildFromStorage();         
+    buildFromToDoStorage();    
+  });
+
+
 
 
 //Handles adding sibling projects
@@ -11,10 +18,11 @@ document.querySelector(".addProjects").addEventListener("click", function () {
 });
 
 //renames projects and their class
-document.querySelector("nav").addEventListener("click", function (e) {
+document.querySelector(".projectsNav").addEventListener("click", function (e) {
     if (e.target.classList.contains("namelessBtn")) {
         nameProjects(e);
     }
+ 
 });
 
 document.querySelector(".addTasks").addEventListener("click", function () {
@@ -34,4 +42,5 @@ document.querySelector("#content").addEventListener("click", function (e) {
 //handles matching project titles with header titles 
 document.querySelector(".projectsNav").addEventListener("click", function (e) {
     matchProjectHeader(e);
+    
 })
