@@ -2,7 +2,7 @@ import "./styles.css"
 
 import { addProjects, nameProjects, matchProjectHeader, buildFromStorage} from "./addProjects";
 
-import { createToDo, postToDo, removeToDo, buildFromToDoStorage} from "./todos";
+import { createToDo, postToDo, removeToDo, clearToDoList, buildFromToDoStorage} from "./todos";
 
 document.addEventListener("DOMContentLoaded", () => {
     buildFromStorage();         
@@ -42,5 +42,7 @@ document.querySelector("#content").addEventListener("click", function (e) {
 //handles matching project titles with header titles 
 document.querySelector(".projectsNav").addEventListener("click", function (e) {
     matchProjectHeader(e);
+    clearToDoList();
+
     
 })

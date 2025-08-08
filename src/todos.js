@@ -10,7 +10,12 @@ class ToDo {
     }
 }
 
-const toDoList = [];
+let toDoList = [];
+
+const clearToDoList = function () {
+    toDoList = [];
+}
+
 //ToDo objects creation function 
 const createToDo = function () {
     const title = prompt ("what is the title?");
@@ -41,23 +46,23 @@ const postToDo = function (newToDo) {
 
 }
 
+//store ToDo objects under header key
 const storeToDo = function () {
-    const header = document.querySelector("h1");
+    const header = document.querySelector(".projectHeader");
     const key = header.textContent
     localStorage.setItem(`${key}`,JSON.stringify(toDoList) )
-
 }
 
 
-//problem with building from storage ... 
+//on click need personal to rebuild from memory and to sync with todoList array. 
 const buildFromToDoStorage = function () {
-    const header = document.querySelector("h1");
+    const header = document.querySelector(".projectHeader");
     const key = header.textContent 
-    console.log(key)
     const storedToDo = JSON.parse(localStorage.getItem(`${key}`))
     if(storedToDo) {
-        storedToDo.forEach(function (newToDo) {
-            postToDo(newToDo);
+        toDoList = storedToDo; 
+        storedToDo.forEach(function(newToDo) {
+            postToDo(newToDo)
         })
 
     }
@@ -85,4 +90,4 @@ return parsedDate;
 }
 
 
-export{createToDo, postToDo, removeToDo, buildFromToDoStorage}
+export{createToDo, postToDo, removeToDo, clearToDoList, buildFromToDoStorage}
