@@ -5,10 +5,17 @@ import { addProjects, nameProjects, matchProjectHeader, buildFromStorage} from "
 import { createToDo, postToDo, removeToDo, clearToDoList, buildFromToDoStorage} from "./todos";
 
 document.addEventListener("DOMContentLoaded", () => {
-    buildFromStorage();         
-    buildFromToDoStorage();    
-  });
+    buildFromStorage(); 
+    
+    let lastProject = localStorage.getItem("currentProject");
+    if (!lastProject) {
+        lastProject = "Personal"; // default project
+        localStorage.setItem("currentProject", lastProject);
+    }
 
+    document.querySelector(".projectHeader").textContent = lastProject;
+    buildFromToDoStorage();      
+});
 
 
 
@@ -43,6 +50,5 @@ document.querySelector("#content").addEventListener("click", function (e) {
 document.querySelector(".projectsNav").addEventListener("click", function (e) {
     matchProjectHeader(e);
     clearToDoList();
-
-    
+    buildFromToDoStorage(); 
 })

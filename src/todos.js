@@ -54,7 +54,7 @@ const storeToDo = function () {
 }
 
 
-//on click need personal to rebuild from memory and to sync with todoList array. 
+//builds only Personal from storage but does not build other projects - look at behavior of refreshing pages
 const buildFromToDoStorage = function () {
     const header = document.querySelector(".projectHeader");
     const key = header.textContent 

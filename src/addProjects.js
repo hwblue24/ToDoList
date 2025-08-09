@@ -59,7 +59,11 @@ const matchProjectHeader = function (e) {
     const textContent = e.target.textContent;
     const projectHeader = document.querySelector(".projectHeader");
     projectHeader.textContent = textContent;
+
+    localStorage.setItem("currentProject", textContent);
+
     deleteToDos();
+
 }
 
 const deleteToDos = function () {
